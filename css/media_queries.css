@@ -1,0 +1,15 @@
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-container { flex-direction: column; }
+    .hero-image-placeholder { width: 100%; margin-top: 40px; }
+}
+
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .main-banner { width: 250px; }
+    .star { width: 50px; }
+    .star-top-left { left: 5%; }
+    .star-bottom-right { right: 5%; }
+}

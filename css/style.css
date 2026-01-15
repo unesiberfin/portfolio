@@ -15,6 +15,8 @@ body {
     color: var(--text-main);
 }
 
+/* //////////////// nav start ////////////////////// */
+
 /* Navigation */
 nav {
     display: flex;
@@ -30,6 +32,74 @@ nav {
     margin-left: 30px;
     font-size: 1.2rem;
 }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%; /* Matches the padding of your hero container */
+    background-color: #fff;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Individual Link Styling */
+.nav-item {
+    text-decoration: none;
+    color: #666; /* Subtle grey for non-active items */
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect: Turns Black and adds a bottom line */
+.nav-item:hover {
+    color: #000;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* Resume Button Styling (Smaller version of your hero buttons) */
+.btn-nav {
+    background: #000;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-nav:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+
+/* //////////////// nav end ////////////////////// */
 
 /* Hero Section */
 .hero-container {
@@ -98,16 +168,11 @@ nav {
     font-size: 0.8rem;
 }
 
-/* Responsive for Mobile */
-@media (max-width: 900px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    .hero-container { flex-direction: column; }
-    .hero-image-placeholder { width: 100%; margin-top: 40px; }
-}
+/* ////////////////HERO START////////////////////// */
 
 /* Container for the icons */
 .hero-media {
-    position: relative; /* This is key for positioning stars */
+    position: relative; /* key for positioning stars */
     flex: 1;
     display: flex;
     justify-content: center;
@@ -117,14 +182,43 @@ nav {
 
 /* The main center icon */
 .main-banner {
-    width: 350px; /* Adjust size based on your asset */
+    width: 350px; 
     height: auto;
     z-index: 2;
     filter: drop-shadow(0px 20px 7px rgba(0, 0, 0, 0.221));
 }
 
+.hero-content {
+    width: 40vw; 
+    padding-right: 5%; 
+}
 
-/* Common style for both stars */
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5rem); /* Responsive font that scales with the window */
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #333;
+    max-width: 90%; /* Prevents text lines from getting too long/strained */
+}
+
+/* Ensure the container stays side-by-side */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    min-height: 80vh;
+}
+
+/* ////////////////HERO END////////////////////// */
+
+/* shared style for both stars */
 .star {
     position: absolute;
     width: 120px; /* Adjust size of stars */
@@ -144,7 +238,7 @@ nav {
 .star-bottom-right {
     bottom: 10%;
     right: 15%;
-    animation-delay: 1s; /* Offset the animation for a more natural look */
+    animation-delay: 1s; 
 }
 
 /* Gentle Floating Animation */
@@ -160,10 +254,36 @@ nav {
     }
 }
 
-/* Ensure responsiveness */
-@media (max-width: 768px) {
-    .main-banner { width: 250px; }
-    .star { width: 50px; }
-    .star-top-left { left: 5%; }
-    .star-bottom-right { right: 5%; }
+
+/* //////////////////buttons start////////////////////// */
+
+/* Base Button Style */
+.btn-pill {
+    background: var(--pill-btn); /* Your current light grey */
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    display: inline-block;
+    
+    /* This creates the smooth transition effect */
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* Prevents "jumping" when adding a border on hover */
 }
+
+/* Hover State */
+.btn-pill:hover {
+    background-color: #000000; /* Your black preference */
+    color: #ffffff;            /* Flips text to white for contrast */
+    transform: translateY(-3px); /* Subtle lift effect popular in UI design */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Active State (When clicked) */
+.btn-pill:active {
+    transform: translateY(-1px);
+}
+
+/* //////////////////buttons end////////////////////// */
