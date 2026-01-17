@@ -42,3 +42,28 @@ window.onclick = function(event) {
         closeGallery();
     }
 }
+
+// scoroll to top
+const topBtn = document.getElementById("backToTop");
+
+// When the user scrolls down 300px from the top, show the button
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+}
+
+// Scroll to top logic
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This creates the "flowy" smooth scroll
+    });
+}
+
