@@ -149,3 +149,14 @@
 
 
 
+/* contact form */
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 60px 5%;
+    }
+    
+    .submit-btn {
+        width: 100%; /* Easier to tap on mobile */
+    }
+}

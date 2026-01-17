@@ -515,7 +515,67 @@ nav {
 
 /* /////////////////////about section end////////////////////// */ 
 
+.contact-section {
+    padding: 80px 10%;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+.contact-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.submit-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    align-self: flex-start;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
 
 /* ////////footer styles//////// */
 #backToTop {
