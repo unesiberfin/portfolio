@@ -182,7 +182,7 @@ nav {
 
 /* The main center icon */
 .main-banner {
-    width: 350px; 
+    width: 600px; 
     height: auto;
     z-index: 2;
     filter: drop-shadow(0px 20px 7px rgba(0, 0, 0, 0.221));
@@ -275,7 +275,7 @@ nav {
 
 /* Hover State */
 .btn-pill:hover {
-    background-color: #000000; /* Your black preference */
+    background-color: #e7552d; /* Your black preference */
     color: #ffffff;            /* Flips text to white for contrast */
     transform: translateY(-3px); /* Subtle lift effect popular in UI design */
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
@@ -286,4 +286,203 @@ nav {
     transform: translateY(-1px);
 }
 
+/* This ensures the link looks the same before and after clicking */
+.project-cta a, 
+.nav-links a, 
+.nav-item {
+    color: #000000; /* Force black color */
+}
+
+/* Specifically targeting the visited state to prevent the purple color */
+.project-cta a:visited, 
+.nav-links a:visited, 
+.nav-item:visited {
+    color: #000000;
+}
+
+/* Keep your hover state active */
+.project-cta a:hover, 
+.nav-item:hover {
+    color: #333333; /* Optional: subtle grey on hover */
+    text-decoration: none;
+}
+
 /* //////////////////buttons end////////////////////// */
+
+
+
+/* projects */
+
+.projects-section {
+    padding: 80px 10%;
+    background-color: #fff;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for your two projects */
+    gap: 40px;
+}
+
+.project-card {
+    background: #f9f9f9;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.project-info {
+    padding: 30px;
+}
+
+.project-info h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.project-cta {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Maintains the 2-column layout */
+    gap: 40px; /* Adds space between the top and bottom rows */
+    margin-top: 50px;
+}
+
+/* Ensure images within the cards scale correctly */
+.project-image-box {
+    width: 100%;
+    height: 250px; /* Adjust height to your preference */
+    overflow: hidden;
+    background-color: #eee; /* Placeholder color if image is missing */
+}
+
+.project-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents stretching */
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 20px; right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Image Container */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.modal-content img {
+    max-width: 80%;
+    max-height: 70vh;
+    border-radius: 10px;
+}
+
+/* Navigation Buttons */
+.modal-nav {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.modal-nav button {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+/* //////////////////about section start////////////////////// */
+
+.about-container {
+    padding: 60px 10%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-intro h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.timeline {
+    margin-top: 80px;
+    position: relative;
+    border-left: 2px solid #000;
+    padding-left: 40px;
+}
+
+.timeline-item {
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -49px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #000;
+    border-radius: 50%;
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.timeline-content p {
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Ensure navigation active state matches your branding */
+.nav-links .active {
+    color: #000;
+    font-weight: 700;
+}
+
+
+/* /////////////////////about section end////////////////////// */ 
