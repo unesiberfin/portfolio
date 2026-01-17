@@ -463,6 +463,22 @@ nav {
 
 /* //////////////////about section start////////////////////// */
 
+.about-banner {
+    /* Adjust this width to find your "sweet spot" */
+    width: 180px; 
+    height: 180px;
+    
+    /* This ensures your face isn't stretched */
+    object-fit: cover; 
+    
+    /* Design choices: */
+    border-radius: 20px; /* Soft rounded corners */
+    border: 2px solid #000; /* Optional: defines the edge against the white background */
+    
+    display: block;
+    margin: 0 auto 30px auto; /* Centers it and adds space below */
+}
+
 .about-container {
     padding: 60px 10%;
     max-width: 900px;
