@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berfin Unesi | Portfolio</title>
+    
+    <link rel="icon" type="image/gif" href="images/star.gif">
+    
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="/css/media_queries.css">
+    <link rel="stylesheet" href="css/media_queries.css">
 </head>
 <body>
 
     <nav>
         <div class="logo">Berfin Unesi</div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">About me</a>
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="index.html#projects" class="nav-item">Projects</a>
+            <a href="about.html" class="nav-item active">About me</a>
         </div>
     </nav>
 
@@ -33,7 +36,7 @@
         </div>
         
         <div class="hero-media">
-            <img src="images/banner-icon.gif" alt="portfolio-icon" class="main-banner">
+            <img src="images/banner-icon-cut.gif" alt="portfolio-icon" class="main-banner">
             
             <img src="images/star.gif" alt="star" class="star star-top-left">
             <img src="images/star.gif" alt="star" class="star star-bottom-right">
@@ -77,6 +80,70 @@
             </div>
         </div>
     </section>
+   <section id="projects" class="projects-section">
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="projects-grid">
+        
+        <div class="project-card">
+            <div class="project-image-box"><img src="images/islamicagroecology-banner.png" alt="WordPress"></div>
+            <div class="project-info">
+                <h3>WordPress CMS Development</h3>
+                <p>Customized and styled a feature-rich website utilizing CMS foundations.</p>
+                <div class="tags"><span>WordPress</span><span>CMS</span></div>
+                <div class="project-cta"><a href="https://islamicagroecology.org/" target="_blank">Live Site</a></div>
+            </div>
+        </div>
 
+        <div class="project-card">
+            <div class="project-image-box"><img src="/images/adboostory-banner.png" alt="adboostory.com"></div>
+            <div class="project-info">
+                <h3>Interactive Web Application</h3>
+                <p>Developed using modern HTML5, CSS3, and JavaScript standards.</p>
+                <div class="tags"><span>JavaScript</span><span>GitHub</span></div>
+                <div class="project-cta">
+                    <a href="https://github.com/unesiberfin/AdBoostory" target="_blank">Code</a>
+                    <a href="https://adboostory.com/" target="_blank">Live Site</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image-box"><img src="images/wireframes.png" alt="Figma"></div>
+            <div class="project-info">
+                <h3>UI/UX: High-Fi Wireframes</h3>
+                <p>Designed intuitive interfaces by applying UX strategies and interaction design.</p>
+                <div class="tags"><span>Figma</span><span>Prototyping</span><span>UI/UX</span></div>
+                <div class="project-cta"><a href="https://www.figma.com/design/yDmy1sPEjKZ3rzx9mGLRU5/Recreation-Center-Wireframes?node-id=51-309&t=eq8bLf2Zm0go8kL4-1" target="_blank">View Prototype</a></div>
+            </div>
+        </div>
+
+        <div class="project-card">
+    <div class="project-image-box">
+        <img src="images/photo-thumb.jpg" alt="Photography">
+    </div>
+    <div class="project-info">
+        <h3>Photography</h3>
+        <p>A collection of professional digital photography showcasing manual camera techniques and post-production storytelling.</p>
+        <div class="tags"><span>Photography</span><span>Visual Media</span></div>
+        <div class="project-cta">
+            <a href="javascript:void(0)" class="nav-item" onclick="openGallery()">View Gallery</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="photo-modal" class="modal">
+        <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="images/essay&ai/unesi_b_a01_portrait-10.jpg" alt="Gallery Photo">
+            <div class="modal-nav">
+                <button onclick="changePhoto(-1)">&#10094; Prev</button>
+                <button onclick="changePhoto(1)">Next &#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+<script src="JS/script.js"></script>
 </body>
 </html>
