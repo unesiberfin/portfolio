@@ -1,4 +1,16 @@
-// Array of your photography image paths
+window.addEventListener('scroll', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 150) {
+            el.classList.add('active');
+        }
+    });
+});
+
+
+
 const photos = [
     "images/photo1.jpg", 
     "images/photo2.jpg", 
