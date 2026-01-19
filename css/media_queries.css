@@ -1,0 +1,172 @@
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-container { flex-direction: column; }
+    .hero-image-placeholder { width: 100%; margin-top: 40px; }
+}
+
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .main-banner { width: 250px; }
+    .star { width: 50px; }
+    .star-top-left { left: 5%; }
+    .star-bottom-right { right: 5%; }
+}
+
+
+/* footer */
+
+/* Mobile Fix for Footer */
+@media (max-width: 768px) {
+    .footer-content { flex-direction: column; }
+    .footer-links { gap: 40px; }
+}
+
+
+/* footer end */
+
+
+
+/* Tablet and Mobile (max-width: 900px) */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        display: flex; /* Shown when toggled */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* Hamburger Bars */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #000;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+/* Tablet & Mobile Styles (max-width: 900px) */
+@media (max-width: 900px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column; /* Keeps text above or below icon as you prefer */
+        align-items: center;
+        text-align: center;
+        padding: 40px 5%; /* Adds breathing room on the sides */
+    }
+
+    .hero-content {
+        width: 100%; /* Text takes up full width */
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.5rem; /* Slightly smaller for mobile screens */
+        margin-bottom: 15px;
+    }
+
+    .hero-media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    /* Shrinking the icon aesthetically */
+    .main-banner {
+        width: 50%; /* Shrinks based on screen size */
+        max-width: 250px; /* Ensures it doesn't get too small or too big */
+        height: auto;
+        transition: all 0.3s ease;
+    }
+
+    /* Shrink the background stars too */
+    .star {
+        width: 30px; 
+    }
+
+
+    .projects-section {
+        padding: 60px 5%; /* Reduces side padding to give cards more space */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Force single column */
+        gap: 30px; /* Space between the stacked cards */
+    }
+
+    .project-card {
+        flex-direction: column; /* Ensures image and info stack correctly */
+    }
+
+    .project-image-box {
+        height: 250px; /* Fixed height for consistency on mobile */
+    }
+
+    .project-info {
+        padding: 20px; /* Slightly tighter padding for smaller screens */
+    }
+
+    .project-info h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Making the tags and buttons easier to tap */
+    .tags {
+        gap: 8px;
+    }
+
+    .tags span {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+}
+
+/* /////about banner icon////// */
+
+/* Tablet & Mobile: Scale it down for smaller screens */
+@media (max-width: 900px) {
+    .about-banner {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* contact form */
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 60px 5%;
+    }
+    
+    .submit-btn {
+        width: 100%; /* Easier to tap on mobile */
+    }
+}
+
