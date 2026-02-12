@@ -67,10 +67,8 @@ nav {
     background-color: #fff;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -1px;
+#resume {
+    color: #e7552d;
 }
 
 .nav-links {
