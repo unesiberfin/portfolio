@@ -67,9 +67,22 @@ nav {
     background-color: #f3f2ec;
 }
 
-#resume {
-    color: #e7552d;
+
+.nav-item.active {
+  color: #ff5a2a;
+  position: relative;
 }
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #ff5a2a;
+}
+
 
 .nav-links {
     display: flex;
