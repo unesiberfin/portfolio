@@ -75,7 +75,7 @@ function scrollFunction() {
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // creates the smooth scroll
+        behavior: 'smooth' // This creates the "flowy" smooth scroll
     });
 }
 
