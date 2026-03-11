@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #f5f5f5; /* Light grey from mockup */
-    --card-bg: #ececec;
+    --bg-color: #f3f2ec; /* Light grey from mockup */
+    --card-bg: #f3f2ec;;
     --text-main: #000000;
     --tag-bg: #000000;
     --tag-text: #ffffff;
@@ -15,7 +15,7 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #f3f2ec;
     color: var(--text-main);
 }
 /* The initial state (hidden) */
@@ -64,7 +64,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%; /* Matches the padding of your hero container */
-    background-color: #fff;
+    background-color: #f3f2ec;
 }
 
 #resume {
@@ -154,7 +154,7 @@ nav {
 .hero-image-placeholder {
     width: 500px;
     height: 400px;
-    background-color: #d9d9d9; /* Grey box from mockup */
+    background-color: #f3f2ec; /* Grey box from mockup */
 }
 
 

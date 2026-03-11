@@ -90,3 +90,32 @@ menu.addEventListener('click', function() {
     menu.classList.toggle('is-active');
     menuLinks.classList.toggle('active');
 });
+
+
+const tabButtons = document.querySelectorAll('.project-tab');
+const projectPanels = document.querySelectorAll('.project-panel');
+
+tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+
+        const targetId = button.dataset.tab;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        projectPanels.forEach(panel => {
+            panel.classList.remove('active');
+            panel.hidden = true;
+        });
+
+        button.classList.add('active');
+
+        const targetPanel = document.getElementById(targetId);
+        targetPanel.classList.add('active');
+        targetPanel.hidden = false;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+});
