@@ -67,7 +67,6 @@ function scrollToTop() {
   });
 }
 
-// hamburger menu
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector('.nav-links');
 
@@ -78,7 +77,6 @@ if (menu && menuLinks) {
   });
 }
 
-// project tabs
 document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.project-tab');
   const projectPanels = document.querySelectorAll('.project-panel');
