@@ -1,0 +1,1225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UX Projects | Berfin Unesi</title>
+  <link rel="icon" type="image/gif" href="images/star.gif"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00563e;
+      --lime: #bad85e;
+      --white: #ffffff;
+      --off-white: #f8f7f3;
+      --ink: #141414;
+      --ink-mid: #444;
+      --ink-soft: #777;
+      --border: #e5e3dd;
+      --max: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 6%;
+      background: var(--green);
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      color: var(--lime);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links li { list-style: none; }
+    .nav-item {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-item:hover, .nav-item.active { color: var(--lime); }
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -5px;
+      width: 100%; height: 2px;
+      background: var(--lime);
+    }
+    .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .bar { display: block; width: 22px; height: 2px; background: var(--lime); }
+
+    /* TABS */
+    .tabs-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%;
+      display: flex;
+      gap: 0;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 18px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .tab-btn:hover { color: var(--ink); }
+    .tab-btn.active {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+
+    /* PANELS */
+    .project-panel { display: none; }
+    .project-panel.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========================
+       PREVIEW CARD (top of each case study)
+       ======================== */
+    .preview-card {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 6%;
+    }
+    .preview-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 72px;
+      align-items: center;
+    }
+    .preview-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: var(--lime);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .preview-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .preview-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .preview-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+      max-width: 500px;
+    }
+    .preview-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink-mid);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .chip.green {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--lime);
+    }
+    .scroll-down {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: var(--lime);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 13px 26px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .scroll-down:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,86,62,0.2);
+    }
+    .preview-visual {
+      position: relative;
+    }
+    .screens-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .screens-mosaic .screen {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+    }
+    .screens-mosaic .screen img { width: 100%; }
+    .screens-mosaic .screen.tall { margin-top: -40px; }
+    .badge-float {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--lime);
+      color: var(--green);
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.3;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+
+    /* ========================
+       CASE STUDY BODY
+       ======================== */
+    .cs-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 6%;
+    }
+
+    /* STAT BAR */
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-item {
+      padding: 32px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* SECTION */
+    .cs-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-section:last-of-type { border-bottom: none; }
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .sec-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 16px;
+      max-width: 700px;
+    }
+    .sec-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink-mid);
+      max-width: 580px;
+      margin-bottom: 48px;
+    }
+
+    /* GRID LAYOUTS */
+    .g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    /* CARDS */
+    .card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+    .card.accent {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .card.accent h3, .card.accent p { color: var(--lime); }
+    .card.lime {
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+    .card.lime h3 { color: var(--green); }
+    .card.lime p { color: var(--green); opacity: 0.85; }
+    .card-num {
+      font-family: 'Fraunces', serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    /* SCREENS SHOWCASE */
+    .screens-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .screen-frame {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .screen-frame img { width: 100%; }
+    .screen-label {
+      padding: 16px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    /* FLOW STEPS */
+    .flow-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 32px;
+    }
+    .flow-step {
+      padding: 28px 20px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .flow-step:last-child { border-right: none; }
+    .flow-step:nth-child(even) { background: var(--off-white); }
+    .step-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--lime);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .step-num.dark { color: var(--green); }
+    .flow-step p {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+
+    /* WIDE IMAGE */
+    .wide-img {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .wide-img img { width: 100%; }
+
+    /* TWO-COL SPLIT */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .split-sticky {
+      position: sticky;
+      top: 80px;
+    }
+
+    /* INSIGHT ROW */
+    .insight-pill {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 12px;
+    }
+    .insight-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .insight-pill p {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* REFLECTION */
+    .reflection-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .reflection-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .reflection-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .reflection-card.r1::before { background: var(--green); }
+    .reflection-card.r2::before { background: var(--lime); }
+    .reflection-card.r3::before { background: #bad85e88; }
+    .reflection-card h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .reflection-card p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    .main-footer {
+      padding: 72px 6% 36px;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+    .footer-content {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    .footer-brand p { color: var(--ink-soft); font-size: 0.9rem; margin-top: 8px; }
+    .footer-links { display: flex; gap: 64px; flex-wrap: wrap; }
+    .footer-group h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+    }
+    .footer-group a, .footer-group p {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink-mid);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-group a:hover { color: var(--green); }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* BACK TO TOP */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 99;
+      width: 48px; height: 48px;
+      background: var(--green);
+      color: var(--lime);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    #backToTop:hover { transform: scale(1.1); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .preview-inner { grid-template-columns: 1fr; }
+      .screens-mosaic { display: flex; gap: 12px; }
+      .screens-mosaic .screen { flex: 1; }
+      .screens-mosaic .screen.tall { margin-top: 0; }
+      .badge-float { display: none; }
+      .stat-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .g4, .g3 { grid-template-columns: repeat(2, 1fr); }
+      .flow-strip { grid-template-columns: repeat(3, 1fr); }
+      .flow-step:nth-child(3) { border-right: none; }
+      .reflection-row { grid-template-columns: 1fr; }
+      .split-layout { grid-template-columns: 1fr; }
+      .split-sticky { position: static; }
+      .screens-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 20px 5%; }
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px; left: 0; right: 0;
+        background: var(--green);
+        padding: 24px 5%;
+        gap: 20px;
+        z-index: 200;
+      }
+      .tabs-strip { overflow-x: auto; gap: 0; }
+      .tab-btn { padding: 16px 18px; font-size: 0.88rem; }
+      .g2, .g4, .g3 { grid-template-columns: 1fr; }
+      .flow-strip { grid-template-columns: 1fr 1fr; }
+      .stat-bar { grid-template-columns: 1fr 1fr; }
+      .screens-row { grid-template-columns: 1fr; }
+      .preview-card { padding: 48px 5%; }
+      .cs-section { padding: 56px 0; }
+      .cs-wrap { padding: 0 5%; }
+    }
+
+    /* Project 2 hero colours */
+    #craft-panel .preview-card {
+      background: #f0f5f3;
+    }
+    #craft-panel .preview-tag {
+      background: #00563e;
+    }
+    #craft-panel .preview-title em {
+      color: #006b4e;
+    }
+
+    /* Project 3 · Le Poison Bleu colours */
+    #poison-panel .preview-card {
+      background: #f0f3f7;
+    }
+    #poison-panel .preview-tag {
+      background: #1b3d6f;
+      color: #c8d8f0;
+    }
+    #poison-panel .preview-title em {
+      color: #1b3d6f;
+    }
+    #poison-panel .scroll-down {
+      background: #1b3d6f;
+      color: #c8d8f0;
+    }
+    #poison-panel .scroll-down:hover {
+      box-shadow: 0 8px 20px rgba(27,61,111,0.25);
+    }
+    #poison-panel .chip.blue {
+      background: #1b3d6f;
+      border-color: #1b3d6f;
+      color: #c8d8f0;
+    }
+    #poison-panel .eyebrow { color: #1b3d6f; }
+    #poison-panel .stat-num { color: #1b3d6f; }
+    #poison-panel .step-num { color: #7fa8d8; }
+    #poison-panel .step-num.dark { color: #1b3d6f; }
+    #poison-panel .card.accent {
+      background: #1b3d6f;
+      border-color: #1b3d6f;
+    }
+    #poison-panel .card.accent h3,
+    #poison-panel .card.accent p { color: #c8d8f0; }
+    #poison-panel .card.lime {
+      background: #c8d8f0;
+      border-color: #c8d8f0;
+    }
+    #poison-panel .card.lime h3 { color: #1b3d6f; }
+    #poison-panel .card.lime p { color: #1b3d6f; opacity: 0.85; }
+    #poison-panel .insight-icon { background: #1b3d6f; }
+    #poison-panel .reflection-card.r1::before { background: #1b3d6f; }
+    #poison-panel .reflection-card.r2::before { background: #7fa8d8; }
+    #poison-panel .reflection-card.r3::before { background: #c8d8f088; }
+    #poison-panel .badge-float {
+      background: #c8d8f0;
+      color: #1b3d6f;
+    }
+    #poison-panel .tab-btn.active { color: #1b3d6f; border-bottom-color: #1b3d6f; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Berfin Unesi</div>
+  <div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-item">Home</a></li>
+    <li><a href="about.html" class="nav-item">About me</a></li>
+    <li><a href="projects.html" class="nav-item active">Projects</a></li>
+    <li><a href="https://drive.google.com/file/d/1Xgdrpbx1m5-_Or__RjsQR5AGcYYKKR8F/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="nav-item">Resume ↗</a></li>
+  </ul>
+</nav>
+
+<!-- TAB BAR -->
+<div class="tabs-strip" role="tablist">
+  <button class="tab-btn active" data-tab="workbench-panel" role="tab" aria-selected="true">WorkBench</button>
+  <button class="tab-btn" data-tab="poison-panel" role="tab" aria-selected="false">Le Poison Bleu</button>
+</div>
+
+<!-- ══════════════════════════════════
+     PROJECT 1 · WORKBENCH
+══════════════════════════════════ -->
+<section id="workbench-panel" class="project-panel active">
+
+  <!-- PREVIEW CARD -->
+  <div class="preview-card">
+    <div class="preview-inner">
+      <div class="preview-copy">
+        <span class="preview-tag">UX Case Study &nbsp;·&nbsp; Skilled Trades Platform</span>
+        <h1 class="preview-title">A worker-first platform for <em>skilled trades.</em></h1>
+        <p class="preview-desc">WorkBench is a mobile-first marketplace connecting verified tradespeople with real job opportunities — built for the job site, not the desk.</p>
+        <div class="preview-chips">
+          <span class="chip green">UX Research</span>
+          <span class="chip green">IA & User Flows</span>
+          <span class="chip green">Hi-fi Wireframes</span>
+          <span class="chip">Figma · FigJam · Maze</span>
+          <span class="chip">3 Designers · 2026</span>
+        </div>
+        <a href="#wb-overview" class="scroll-down">View case study &nbsp;↓</a>
+      </div>
+      <div class="preview-visual">
+        <div class="screens-mosaic">
+          <div class="screen">
+            <img src="images/workbench-dasshboard-mobile.png" alt="WorkBench Post a Job screen">
+          </div>
+          <div class="screen tall">
+            <img src="images/workbench-sign-in-mobile.png" alt="WorkBench Confirmation screen">
+          </div>
+        </div>
+        <div class="badge-float">Hi-fi Prototype<br><span style="opacity:0.7;font-weight:400">Mobile · iOS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDY BODY -->
+  <div class="cs-wrap">
+
+    <!-- STAT BAR -->
+    <div class="stat-bar" id="wb-overview">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Designers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">User Types</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Screens Designed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Hi-fi</div>
+        <div class="stat-label">Fidelity Output</div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="cs-section">
+      <p class="eyebrow">Project Overview</p>
+      <h2 class="sec-title">A native platform built for the job site, not the desk.</h2>
+      <p class="sec-sub">Modernizing skilled trades hiring by connecting verified talent with clients through a fair, accessible, and worker-first digital experience.</p>
+      <div class="g2">
+        <div class="card">
+          <p class="card-num">01 — Mission</p>
+          <h3>Worker-first by design</h3>
+          <p>Connect verified tradespeople and clients through a fair, accessible platform that supports real careers — not just short-term gigs.</p>
+        </div>
+        <div class="card">
+          <p class="card-num">02 — Users</p>
+          <h3>Two sides of one marketplace</h3>
+          <p>Skilled tradespeople & apprentices seeking visibility and work. Homeowners, contractors, and firms looking for verified, trustworthy talent.</p>
+        </div>
+        <div class="card">
+          <p class="card-num">03 — The Gap</p>
+          <h3>Word-of-mouth creates blind spots</h3>
+          <p>Existing platforms favour established businesses, leaving new workers invisible and clients without reliable ways to compare their options.</p>
+        </div>
+        <div class="card accent">
+          <p class="card-num" style="color:rgba(186,216,94,0.6)">04 — Pitch</p>
+          <h3>One line</h3>
+          <p>A worker-first marketplace connecting verified trades talent with real opportunities — built for the job site, not the desk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="cs-section">
+      <p class="eyebrow">Research & Discovery</p>
+      <h2 class="sec-title">Understanding friction on both sides.</h2>
+      <p class="sec-sub">We explored labour shortages, trust in trades hiring, digital barriers, and the realities of mobile use in job-site environments.</p>
+      <div class="g2" style="margin-bottom: 16px;">
+        <div class="card">
+          <p class="card-num">Method 01</p>
+          <h3>Competitor Analysis</h3>
+          <p>Reviewed TaskRabbit and job boards to identify gaps in skill verification, long-term growth support, and worker-centred design.</p>
+        </div>
+        <div class="card">
+          <p class="card-num">Method 02</p>
+          <h3>Desk Research</h3>
+          <p>Explored labour shortages, digital transformation in trades, and barriers affecting accessibility, trust, and industry entry.</p>
+        </div>
+        <div class="card">
+          <p class="card-num">Method 03</p>
+          <h3>Journey Mapping</h3>
+          <p>Built journeys for three target users to identify emotional friction, pain points, and opportunity areas across the full lifecycle.</p>
+        </div>
+        <div class="card">
+          <p class="card-num">Method 04</p>
+          <h3>Flow & IA Workshops</h3>
+          <p>Used FigJam and Miro to collaboratively define product structure and core marketplace journeys for both user types.</p>
+        </div>
+      </div>
+      <!-- KEY INSIGHTS -->
+      <div style="margin-top: 32px;">
+        <div class="insight-pill">
+          <div class="insight-icon">💡</div>
+          <p><strong>Insight 1 —</strong> Workers need visibility and credibility tools, especially when new, independent, or early in their careers.</p>
+        </div>
+        <div class="insight-pill">
+          <div class="insight-icon">🔒</div>
+          <p><strong>Insight 2 —</strong> Clients need stronger trust signals than a short bio — proof of skill, reviews, certifications, and past work matter.</p>
+        </div>
+        <div class="insight-pill">
+          <div class="insight-icon">💬</div>
+          <p><strong>Insight 3 —</strong> Communication around scope, timing, and expectations is one of the biggest friction sources on both sides.</p>
+        </div>
+        <div class="insight-pill">
+          <div class="insight-icon">⚡</div>
+          <p><strong>Insight 4 —</strong> Trade users need lightweight, fast tools — not systems that add complexity or form-heavy workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- USER FLOWS -->
+    <section class="cs-section">
+      <p class="eyebrow">Core User Flows</p>
+      <h2 class="sec-title">Two flagship journeys shaped the experience.</h2>
+      <p class="sec-sub">We mapped the full lifecycle for both clients and providers, then designed flows that reduce friction at every handoff.</p>
+
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);margin-bottom:12px;">Flow 1 — Client hires a worker</p>
+      <div class="flow-strip">
+        <div class="flow-step"><div class="step-num">01</div><p>Login or sign up</p></div>
+        <div class="flow-step"><div class="step-num">02</div><p>Client dashboard</p></div>
+        <div class="flow-step"><div class="step-num">03</div><p>Browse workers or post a job</p></div>
+        <div class="flow-step"><div class="step-num">04</div><p>View worker profile</p></div>
+        <div class="flow-step"><div class="step-num">05</div><p>Start chat, clarify details</p></div>
+        <div class="flow-step"><div class="step-num">06</div><p>Hire & manage active jobs</p></div>
+      </div>
+
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);margin-bottom:12px;margin-top:28px;">Flow 2 — Worker finds work</p>
+      <div class="flow-strip">
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">01</div><p>Login or sign up</p></div>
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">02</div><p>Worker dashboard</p></div>
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">03</div><p>Browse available jobs</p></div>
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">04</div><p>Apply or start chat</p></div>
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">05</div><p>Get hired & manage projects</p></div>
+        <div class="flow-step"><div class="step-num dark" style="color:var(--green)">06</div><p>Complete & receive vouches</p></div>
+      </div>
+    </section>
+
+    <!-- SCREENS -->
+    <section class="cs-section">
+      <p class="eyebrow">Design Screens</p>
+      <h2 class="sec-title">Hi-fi wireframes focused on trust and workflow clarity.</h2>
+      <p class="sec-sub">Mobile-first flows that reduce cognitive load for workers using the platform in busy, fast-moving environments.</p>
+      <div class="screens-row">
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-1-mobile.png" alt="Post a Job screen">
+          <div class="screen-label">Post a Job — Create Work Order</div>
+        </div>
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-2-mobile.png" alt="Skill Requirements screen">
+          <div class="screen-label">Skill Requirements Selection</div>
+        </div>
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-3-tablet.png" alt="Confirmation screen">
+          <div class="screen-label">Review & Confirm Job Posting</div>
+        </div>
+      </div>
+      <!-- Login wide -->
+      <div class="wide-img" style="margin-top:24px;">
+        <img src="images/workbench-sign-in-tablet.png" alt="WorkBench login screen on tablet">
+      </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="cs-section">
+      <p class="eyebrow">Proposed Solution</p>
+      <h2 class="sec-title">Features built to improve trust, visibility, and communication.</h2>
+      <div class="g4">
+        <div class="card lime">
+          <h3>Verified Profiles</h3>
+          <p>Certifications, past work, and trust signals that go beyond a simple bio.</p>
+        </div>
+        <div class="card lime">
+          <h3>Vouch System</h3>
+          <p>Digital word-of-mouth to help newer workers build credibility and surface strengths.</p>
+        </div>
+        <div class="card lime">
+          <h3>Job-Site Messaging</h3>
+          <p>Faster communication with less friction around scope, changes, and scheduling.</p>
+        </div>
+        <div class="card lime">
+          <h3>Booking Clarity</h3>
+          <p>Shared expectations, visible details, and stronger process checkpoints on both sides.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLECTION -->
+    <section class="cs-section">
+      <p class="eyebrow">Reflection</p>
+      <h2 class="sec-title">What I learned from designing WorkBench.</h2>
+      <div class="reflection-row">
+        <div class="reflection-card r1">
+          <h3>Biggest Challenge</h3>
+          <p>Designing a booking flow that balanced clarity, communication, and security for both sides simultaneously — required the most iteration of any section.</p>
+        </div>
+        <div class="reflection-card r2">
+          <h3>Key Learning</h3>
+          <p>Two-sided marketplaces require you to hold two mental models at once. Every design decision that helps one user type can create friction for the other.</p>
+        </div>
+        <div class="reflection-card r3">
+          <h3>Next Step</h3>
+          <p>Expand the student apprentice onboarding and run usability testing to validate the vouch system's trust-building effectiveness with real users.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /cs-wrap -->
+</section>
+
+<!-- ══════════════════════════════════
+     PROJECT 3 · LE POISON BLEU
+══════════════════════════════════ -->
+<section id="poison-panel" class="project-panel">
+
+  <!-- PREVIEW CARD -->
+  <div class="preview-card">
+    <div class="preview-inner">
+      <div class="preview-copy">
+        <span class="preview-tag">UX Case Study &nbsp;·&nbsp; Restaurant Website Design</span>
+        <h1 class="preview-title">A full digital identity for <em>Le Poison Bleu.</em></h1>
+        <p class="preview-desc">Le Poison Bleu is a French-inspired fine dining restaurant. This project designed their full website experience from scratch — crafting a visual identity, information architecture, and event discovery system across desktop and mobile.</p>
+        <div class="preview-chips">
+          <span class="chip blue">Visual Design</span>
+          <span class="chip blue">UX Research</span>
+          <span class="chip blue">Responsive Design</span>
+          <span class="chip">Figma · Illustrator</span>
+          <span class="chip">Website Design · 2026</span>
+        </div>
+        <a href="#lpb-overview" class="scroll-down">View case study &nbsp;↓</a>
+      </div>
+      <div class="preview-visual">
+        <div class="screens-mosaic">
+          <div class="screen" style="background:#1b3d6f;padding:32px 20px;display:flex;align-items:center;justify-content:center;min-height:260px;">
+            <div style="text-align:center;color:#c8d8f0;opacity:0.7;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              <p style="margin-top:12px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;">Le Poison Bleu<br>Desktop</p>
+            </div>
+          </div>
+          <div class="screen tall" style="background:#163060;padding:32px 20px;display:flex;align-items:center;justify-content:center;min-height:300px;">
+            <div style="text-align:center;color:#c8d8f0;opacity:0.7;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              <p style="margin-top:12px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;">Mobile View</p>
+            </div>
+          </div>
+        </div>
+        <div class="badge-float">Fine Dining UX<br><span style="opacity:0.7;font-weight:400">Web · Desktop + Mobile</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-wrap">
+
+    <!-- STAT BAR -->
+    <div class="stat-bar" id="lpb-overview">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Pages Designed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Breakpoints (Desktop + Mobile)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">IA</div>
+        <div class="stat-label">Full Info Architecture</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Hi-fi</div>
+        <div class="stat-label">High-Fidelity Prototypes</div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="cs-section">
+      <p class="eyebrow">01 &nbsp;·&nbsp; Overview</p>
+      <h2 class="sec-title">Bringing a fine dining brand online with intention.</h2>
+      <p class="sec-sub">Le Poison Bleu needed more than a website — it needed a digital experience that matched the ambiance of the restaurant itself. The goal was to design a full site that communicated elegance, made reservations frictionless, and surfaced events in a way that felt exciting, not cluttered.</p>
+      <div class="g3">
+        <div class="card">
+          <div class="card-num">Role</div>
+          <h3>UX & Visual Designer</h3>
+          <p>End-to-end design across all pages — from brand identity to final hi-fi prototypes for desktop and mobile.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">Tools</div>
+          <h3>Figma & Illustrator</h3>
+          <p>All screens and components designed in Figma. Custom fish logo and visual assets created in Adobe Illustrator.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">Scope</div>
+          <h3>Full Website Design</h3>
+          <p>Home, Menu, Our Story, Reservations, Events — designed as a cohesive system across desktop and mobile breakpoints.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="cs-section">
+      <p class="eyebrow">02 &nbsp;·&nbsp; The Problem</p>
+      <h2 class="sec-title">Fine dining restaurants often have the weakest digital presence.</h2>
+      <p class="sec-sub">High-end restaurants frequently rely on word of mouth and third-party platforms, leaving their own website as an afterthought. This creates a mismatch — guests expect a premium experience before they even walk in the door.</p>
+      <div class="g2">
+        <div class="card accent">
+          <h3>The Gap</h3>
+          <p>Restaurant websites often fail to communicate atmosphere, making it hard for new guests to understand the experience they're signing up for — especially for a venue like Le Poison Bleu, where ambiance is central to the brand.</p>
+        </div>
+        <div class="card lime">
+          <h3>The Opportunity</h3>
+          <p>Design a site that acts as a digital extension of the restaurant — conveying sophistication, making it easy to explore the menu and events, and removing all friction from the reservation flow.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="cs-section">
+      <p class="eyebrow">03 &nbsp;·&nbsp; Research & Insights</p>
+      <h2 class="sec-title">What diners actually need from a restaurant site.</h2>
+      <p class="sec-sub">Competitive analysis of fine dining websites, combined with user research around restaurant discovery and reservation behaviour, surfaced key priorities.</p>
+      <div class="insight-pill">
+        <div class="insight-icon">🔍</div>
+        <p><strong>Menu discoverability is #1.</strong> Users consistently cited not being able to find the menu quickly as a top frustration. PDF menus and buried navigation were major drop-off points.</p>
+      </div>
+      <div class="insight-pill">
+        <div class="insight-icon">📅</div>
+        <p><strong>Events drive return visits.</strong> Guests who knew about a restaurant's special events were significantly more likely to rebook. But most restaurant sites buried events in footers or separate links.</p>
+      </div>
+      <div class="insight-pill">
+        <div class="insight-icon">📱</div>
+        <p><strong>Mobile-first decision making.</strong> Most restaurant research happens on mobile — users browse menus, check hours, and look at photos on their phones before deciding to book.</p>
+      </div>
+      <div class="insight-pill">
+        <div class="insight-icon">✨</div>
+        <p><strong>Visual storytelling builds trust.</strong> High-quality imagery and thoughtful design act as social proof — they communicate quality and set expectations for the dining experience.</p>
+      </div>
+    </section>
+
+    <!-- IA & STRUCTURE -->
+    <section class="cs-section">
+      <p class="eyebrow">04 &nbsp;·&nbsp; Information Architecture</p>
+      <h2 class="sec-title">A clear, intuitive navigation system.</h2>
+      <p class="sec-sub">The site was structured around five core user goals: exploring the restaurant, browsing the menu, learning the story, booking a table, and discovering events.</p>
+      <div class="flow-strip">
+        <div class="flow-step">
+          <div class="step-num">01</div>
+          <p><strong>Home</strong><br>Brand intro, hero imagery, quick links to reservations and menu.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">02</div>
+          <p><strong>Menu</strong><br>Digitised, scannable menus — no PDFs. Organised by course.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">03</div>
+          <p><strong>Our Story</strong><br>Brand narrative, chef profile, and philosophy of the restaurant.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">04</div>
+          <p><strong>Reservations</strong><br>Frictionless booking flow. Date, party size, time selection.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">05</div>
+          <p><strong>Events</strong><br>Upcoming events with cards, pricing, and clear CTAs.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num dark">CTA</div>
+          <p><strong>Reserve Table</strong><br>Persistent CTA in the nav — accessible from every page.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN DECISIONS -->
+    <section class="cs-section">
+      <p class="eyebrow">05 &nbsp;·&nbsp; Design Decisions</p>
+      <h2 class="sec-title">Visual choices that reinforce the brand.</h2>
+      <p class="sec-sub">Every design decision was made to evoke the sophistication of Le Poison Bleu while keeping the experience clean and accessible.</p>
+      <div class="g2">
+        <div class="card">
+          <h3>Navy & White Palette</h3>
+          <p>A deep navy (#1b3d6f) paired with crisp white creates a sense of refinement and depth — echoing the nautical undercurrent of the restaurant's name and concept.</p>
+        </div>
+        <div class="card">
+          <h3>Custom Fish Logo</h3>
+          <p>A hand-crafted illustrated fish mark was designed to be distinctive and ownable — simple enough for the nav, expressive enough to anchor the brand identity.</p>
+        </div>
+        <div class="card">
+          <h3>Hero Carousel on Events</h3>
+          <p>The Events page uses a full-bleed image carousel to create a sense of occasion — each event feels curated and special, not like a list item on a bulletin board.</p>
+        </div>
+        <div class="card">
+          <h3>Sticky "Reserve Table" CTA</h3>
+          <p>The reservation button is persistent in the navigation on all pages, removing any friction for users who are ready to book at any point in their browsing journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENS SHOWCASE -->
+    <section class="cs-section">
+      <p class="eyebrow">06 &nbsp;·&nbsp; Screen Highlights</p>
+      <h2 class="sec-title">Key screens across the experience.</h2>
+      <p class="sec-sub">Designed at full fidelity for both desktop and mobile, with consistent components and spacing across all breakpoints.</p>
+      <div class="screens-row">
+        <div class="screen-frame">
+          <div style="background:#1b3d6f;padding:40px 24px;display:flex;align-items:center;justify-content:center;min-height:220px;">
+            <div style="text-align:center;color:#c8d8f0;opacity:0.75;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <p style="margin-top:10px;font-size:0.78rem;font-weight:600;">Home Page</p>
+            </div>
+          </div>
+          <div class="screen-label">Home · Hero & Navigation</div>
+        </div>
+        <div class="screen-frame">
+          <div style="background:#163060;padding:40px 24px;display:flex;align-items:center;justify-content:center;min-height:220px;">
+            <div style="text-align:center;color:#c8d8f0;opacity:0.75;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10H3M16 2v4M8 2v4M3 6h18v16H3z"/></svg>
+              <p style="margin-top:10px;font-size:0.78rem;font-weight:600;">Events Page</p>
+            </div>
+          </div>
+          <div class="screen-label">Events · Carousel + Cards</div>
+        </div>
+        <div class="screen-frame">
+          <div style="background:#1b3d6f;padding:40px 24px;display:flex;align-items:center;justify-content:center;min-height:220px;">
+            <div style="text-align:center;color:#c8d8f0;opacity:0.75;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              <p style="margin-top:10px;font-size:0.78rem;font-weight:600;">Mobile View</p>
+            </div>
+          </div>
+          <div class="screen-label">Mobile · Responsive Layouts</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS DEEP DIVE -->
+    <section class="cs-section">
+      <p class="eyebrow">07 &nbsp;·&nbsp; Feature Focus · Events</p>
+      <h2 class="sec-title">Making events feel like experiences worth attending.</h2>
+      <p class="sec-sub">The events section was a key differentiator in the design. Rather than a simple list, it uses a carousel hero and card-based layout with pricing, date, and time — making each event feel curated and exclusive.</p>
+      <div class="g2" style="margin-top:32px;">
+        <div class="card">
+          <h3>Wine Tasting Evening</h3>
+          <p>March 15, 2026 &nbsp;·&nbsp; 6:00 PM – 9:00 PM<br><br>$85 per person. A guided tasting featuring curated pairings selected by the sommelier.</p>
+        </div>
+        <div class="card accent">
+          <h3>Chef's Table Experience</h3>
+          <p>March 22, 2026 &nbsp;·&nbsp; 7:00 PM<br><br>$150 per person. An intimate evening with the chef — a multi-course tasting menu with live narration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLECTION -->
+    <section class="cs-section">
+      <p class="eyebrow">08 &nbsp;·&nbsp; Reflection</p>
+      <h2 class="sec-title">What this project taught me.</h2>
+      <p class="sec-sub">Designing for hospitality means designing for emotion as much as function. Every screen carries a responsibility to make guests feel something before they arrive.</p>
+      <div class="reflection-row">
+        <div class="reflection-card r1">
+          <h3>Brand ↔ UX alignment</h3>
+          <p>The strongest design decisions came from asking "does this feel like Le Poison Bleu?" — keeping brand identity and UX in constant conversation rather than treating them separately.</p>
+        </div>
+        <div class="reflection-card r2">
+          <h3>Simplicity earns trust</h3>
+          <p>Fine dining guests are used to restraint. Removing clutter, using whitespace generously, and letting imagery breathe made the site feel more premium than any added decoration could.</p>
+        </div>
+        <div class="reflection-card r3">
+          <h3>Mobile changes everything</h3>
+          <p>Designing the mobile experience in parallel — not as an afterthought — forced better decisions on layout priority, touch targets, and content hierarchy that improved the desktop too.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /cs-wrap -->
+</section>
+
+<button onclick="scrollToTop()" id="backToTop" title="Go to top">↑</button>
+
+<footer class="main-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">Berfin Unesi</div>
+      <p>Web Developer & UI/UX Designer</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-group">
+        <h4>Social</h4>
+        <a href="https://www.linkedin.com/in/berfinunesi/" target="_blank">LinkedIn</a>
+        <a href="https://unesiberfin.myportfolio.com/" target="_blank">Adobe Portfolio</a>
+      </div>
+      <div class="footer-group">
+        <h4>Contact</h4>
+        <a href="mailto:berfinunesi@gmail.com">berfinunesi@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Berfin Unesi. Created with passion in Canada.</p>
+  </div>
+</footer>
+
+<script>
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.project-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      const panel = document.getElementById(btn.dataset.tab);
+      if (panel) panel.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Mobile nav
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuToggle) menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+  // Back to top
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backToTop');
+    if (btn) btn.style.display = window.scrollY > 400 ? 'block' : 'none';
+  });
+  function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+</script>
+
+</body>
+</html>
