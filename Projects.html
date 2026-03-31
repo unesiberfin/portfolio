@@ -97,6 +97,19 @@
       color: var(--green);
       border-bottom-color: var(--green);
     }
+    .tabs-adobe-link {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      padding: 0 4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .tabs-adobe-link:hover { color: var(--green); }
 
     /* PANELS */
     .project-panel { display: none; }
@@ -671,6 +684,7 @@
 <div class="tabs-strip" role="tablist">
   <button class="tab-btn active" data-tab="workbench-panel" role="tab" aria-selected="true">WorkBench</button>
   <button class="tab-btn" data-tab="poison-panel" role="tab" aria-selected="false">Le Poison Bleu</button>
+  <a href="https://unesiberfin.myportfolio.com/" target="_blank" class="tabs-adobe-link">See other projects ↗</a>
 </div>
 
 <!-- ══════════════════════════════════
