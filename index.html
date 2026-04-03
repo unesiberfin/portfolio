@@ -244,25 +244,24 @@
     .work-inner .sec-title { margin-bottom: 48px; }
     .work-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
     }
     .work-card {
       display: block;
       border-radius: 20px;
       overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--border);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .work-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    }
+    .work-card:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(0,0,0,0.13); }
+    .work-card--wide { grid-row: 1; }
+    .work-card--adobe-full { grid-column: 1 / -1; }
     .work-card-img {
       width: 100%;
-      aspect-ratio: 16/10;
+      aspect-ratio: 16/9;
       overflow: hidden;
+      position: relative;
       background: var(--green);
     }
     .work-card-img img {
@@ -274,12 +273,45 @@
       transition: transform 0.5s ease;
     }
     .work-card:hover .work-card-img img { transform: scale(1.04); }
+    .work-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .work-card:hover .work-card-overlay { opacity: 1; }
+    .work-card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--lime);
+    }
+    .work-card-overlay h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .work-card-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+    }
     .work-card-img--adobe {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #1a1a2e;
-      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      aspect-ratio: 21/6;
+      position: relative;
     }
     .adobe-badge {
       display: flex;
@@ -305,36 +337,9 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
     }
-    .work-card-info {
-      padding: 24px 28px 28px;
-    }
-    .work-card-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--green);
-    }
-    .work-card-info h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      margin: 8px 0 8px;
-    }
-    .work-card-info p {
-      font-size: 0.92rem;
-      color: var(--ink-soft);
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .work-card-link {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--green);
-    }
+    .work-card-img--adobe .work-card-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%); }
 
     /* ── SKILLS ── */
     .skills-section {
@@ -586,6 +591,8 @@
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .device-mockup { transform: none; }
       .work-grid { grid-template-columns: 1fr; }
+      .work-card--adobe-full { grid-column: 1; }
+      .work-card-img--adobe { aspect-ratio: 16/7; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-inner { flex-direction: column; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }

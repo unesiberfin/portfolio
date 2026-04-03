@@ -111,6 +111,97 @@
     }
     .tabs-adobe-link:hover { color: var(--green); }
 
+    /* ── CALLOUT BLOCK ── */
+    .callout-block {
+      background: var(--off-white);
+      border-left: 4px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 28px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .callout-quote {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .callout-attr {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+    }
+
+    /* ── METHOD GRID ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .method-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .method-icon { font-size: 2rem; margin-bottom: 12px; }
+    .method-card h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .method-card p {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* ── INSIGHT ROW ── */
+    .insight-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .insight-chip {
+      background: var(--green);
+      color: var(--lime);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+    }
+
+    /* ── SOLUTION CARDS ── */
+    .solution-card {
+      background: var(--green);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .solution-icon { font-size: 2rem; margin-bottom: 14px; }
+    .solution-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--lime);
+      margin-bottom: 8px;
+    }
+    .solution-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
     /* PANELS */
     .project-panel { display: none; }
     .project-panel.active {
@@ -596,6 +687,8 @@
       .tabs-strip { overflow-x: auto; gap: 0; }
       .tab-btn { padding: 16px 18px; font-size: 0.88rem; }
       .g2, .g4, .g3 { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
+      .insight-row { flex-direction: column; }
       .flow-strip { grid-template-columns: 1fr 1fr; }
       .stat-bar { grid-template-columns: 1fr 1fr; }
       .screens-row { grid-template-columns: 1fr; }
@@ -747,86 +840,64 @@
 
     <!-- OVERVIEW -->
     <section class="cs-section">
-      <p class="eyebrow">Project Overview</p>
-      <h2 class="sec-title">A native platform built for the job site, not the desk.</h2>
-      <p class="sec-sub">Modernizing skilled trades hiring by connecting verified talent with clients through a fair, accessible, and worker-first digital experience.</p>
-      <div class="g2">
+      <p class="eyebrow">The Problem</p>
+      <h2 class="sec-title">Trades hiring runs on word-of-mouth. That's broken.</h2>
+      <div class="callout-block">
+        <span class="callout-quote">"Everything feels like a scam — there's no way to know if someone is actually good."</span>
+        <span class="callout-attr">— Client pain point, discovery research</span>
+      </div>
+      <div class="g2" style="margin-top:32px;">
         <div class="card">
-          <p class="card-num">01 — Mission</p>
-          <h3>Worker-first by design</h3>
-          <p>Connect verified tradespeople and clients through a fair, accessible platform that supports real careers — not just short-term gigs.</p>
+          <p class="card-num">👷 Workers</p>
+          <h3>Invisible without reputation</h3>
+          <p>New and independent tradespeople have no way to prove their skills digitally.</p>
         </div>
         <div class="card">
-          <p class="card-num">02 — Users</p>
-          <h3>Two sides of one marketplace</h3>
-          <p>Skilled tradespeople & apprentices seeking visibility and work. Homeowners, contractors, and firms looking for verified, trustworthy talent.</p>
-        </div>
-        <div class="card">
-          <p class="card-num">03 — The Gap</p>
-          <h3>Word-of-mouth creates blind spots</h3>
-          <p>Existing platforms favour established businesses, leaving new workers invisible and clients without reliable ways to compare their options.</p>
-        </div>
-        <div class="card accent">
-          <p class="card-num" style="color:rgba(186,216,94,0.6)">04 — Pitch</p>
-          <h3>One line</h3>
-          <p>A worker-first marketplace connecting verified trades talent with real opportunities — built for the job site, not the desk.</p>
+          <p class="card-num">🏠 Clients</p>
+          <h3>No trust signals to compare</h3>
+          <p>Hiring feels like a gamble — bios and star ratings don't tell the full story.</p>
         </div>
       </div>
     </section>
 
     <!-- RESEARCH -->
     <section class="cs-section">
-      <p class="eyebrow">Research & Discovery</p>
-      <h2 class="sec-title">Understanding friction on both sides.</h2>
-      <p class="sec-sub">We explored labour shortages, trust in trades hiring, digital barriers, and the realities of mobile use in job-site environments.</p>
-      <div class="g2" style="margin-bottom: 16px;">
-        <div class="card">
-          <p class="card-num">Method 01</p>
-          <h3>Competitor Analysis</h3>
-          <p>Reviewed TaskRabbit and job boards to identify gaps in skill verification, long-term growth support, and worker-centred design.</p>
+      <p class="eyebrow">Research</p>
+      <h2 class="sec-title">Four methods. Clear signal.</h2>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-icon">🔍</div>
+          <h4>Competitor Audit</h4>
+          <p>TaskRabbit, Facebook Marketplace — gaps in trust & worker growth</p>
         </div>
-        <div class="card">
-          <p class="card-num">Method 02</p>
-          <h3>Desk Research</h3>
-          <p>Explored labour shortages, digital transformation in trades, and barriers affecting accessibility, trust, and industry entry.</p>
+        <div class="method-card">
+          <div class="method-icon">📚</div>
+          <h4>Desk Research</h4>
+          <p>Labour shortages, digital barriers, mobile use on job sites</p>
         </div>
-        <div class="card">
-          <p class="card-num">Method 03</p>
-          <h3>Journey Mapping</h3>
-          <p>Built journeys for three target users to identify emotional friction, pain points, and opportunity areas across the full lifecycle.</p>
+        <div class="method-card">
+          <div class="method-icon">🗺️</div>
+          <h4>Journey Mapping</h4>
+          <p>3 personas · full lifecycle · emotional friction mapped</p>
         </div>
-        <div class="card">
-          <p class="card-num">Method 04</p>
-          <h3>Flow & IA Workshops</h3>
-          <p>Used FigJam and Miro to collaboratively define product structure and core marketplace journeys for both user types.</p>
+        <div class="method-card">
+          <div class="method-icon">🧩</div>
+          <h4>IA Workshops</h4>
+          <p>FigJam · collaborative sitemap · dual-user flows</p>
         </div>
       </div>
-      <!-- KEY INSIGHTS -->
-      <div style="margin-top: 32px;">
-        <div class="insight-pill">
-          <div class="insight-icon">💡</div>
-          <p><strong>Insight 1 —</strong> Workers need visibility and credibility tools, especially when new, independent, or early in their careers.</p>
-        </div>
-        <div class="insight-pill">
-          <div class="insight-icon">🔒</div>
-          <p><strong>Insight 2 —</strong> Clients need stronger trust signals than a short bio — proof of skill, reviews, certifications, and past work matter.</p>
-        </div>
-        <div class="insight-pill">
-          <div class="insight-icon">💬</div>
-          <p><strong>Insight 3 —</strong> Communication around scope, timing, and expectations is one of the biggest friction sources on both sides.</p>
-        </div>
-        <div class="insight-pill">
-          <div class="insight-icon">⚡</div>
-          <p><strong>Insight 4 —</strong> Trade users need lightweight, fast tools — not systems that add complexity or form-heavy workflows.</p>
-        </div>
+      <div class="insight-row">
+        <div class="insight-chip">💡 Workers need digital credibility</div>
+        <div class="insight-chip">🔒 Clients need more than star ratings</div>
+        <div class="insight-chip">💬 Scope friction = biggest pain point</div>
+        <div class="insight-chip">⚡ Mobile-first, fast, lightweight</div>
       </div>
     </section>
 
     <!-- USER FLOWS -->
     <section class="cs-section">
-      <p class="eyebrow">Core User Flows</p>
-      <h2 class="sec-title">Two flagship journeys shaped the experience.</h2>
-      <p class="sec-sub">We mapped the full lifecycle for both clients and providers, then designed flows that reduce friction at every handoff.</p>
+      <p class="eyebrow">User Flows</p>
+      <h2 class="sec-title">Two journeys. One platform.</h2>
 
       <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);margin-bottom:12px;">Flow 1 — Client hires a worker</p>
       <div class="flow-strip">
@@ -851,69 +922,85 @@
 
     <!-- SCREENS -->
     <section class="cs-section">
-      <p class="eyebrow">Design Screens</p>
-      <h2 class="sec-title">Hi-fi wireframes focused on trust and workflow clarity.</h2>
-      <p class="sec-sub">Mobile-first flows that reduce cognitive load for workers using the platform in busy, fast-moving environments.</p>
-      <div class="screens-row">
+      <p class="eyebrow">Hi-fi Screens</p>
+      <h2 class="sec-title">Mobile-first. Built for the job site.</h2>
+      <div class="wide-img" style="margin-bottom:16px;">
+        <img src="images/workbench-sign-in-tablet.png" alt="WorkBench sign-in — tablet">
+      </div>
+      <div class="screens-row" style="margin-bottom:16px;">
         <div class="screen-frame">
-          <img src="images/workbench-job-post-1-mobile.png" alt="Post a Job screen">
-          <div class="screen-label">Post a Job — Create Work Order</div>
+          <img src="images/workbench-dasshboard-mobile.png" alt="Worker dashboard">
+          <div class="screen-label">Worker Dashboard</div>
         </div>
         <div class="screen-frame">
-          <img src="images/workbench-job-post-2-mobile.png" alt="Skill Requirements screen">
-          <div class="screen-label">Skill Requirements Selection</div>
+          <img src="images/workbench-dashboard-tablet.png" alt="Dashboard tablet">
+          <div class="screen-label">Client Dashboard — Tablet</div>
         </div>
         <div class="screen-frame">
-          <img src="images/workbench-job-post-3-tablet.png" alt="Confirmation screen">
-          <div class="screen-label">Review & Confirm Job Posting</div>
+          <img src="images/workbench-jobs-tablet.png" alt="Jobs listing">
+          <div class="screen-label">Browse Jobs</div>
         </div>
       </div>
-      <!-- Login wide -->
-      <div class="wide-img" style="margin-top:24px;">
-        <img src="images/workbench-sign-in-tablet.png" alt="WorkBench login screen on tablet">
+      <div class="screens-row">
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-1-mobile.png" alt="Post a Job">
+          <div class="screen-label">Post a Job</div>
+        </div>
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-2-mobile.png" alt="Skill Requirements">
+          <div class="screen-label">Skill Requirements</div>
+        </div>
+        <div class="screen-frame">
+          <img src="images/workbench-job-post-3-tablet.png" alt="Confirm Job">
+          <div class="screen-label">Review & Confirm</div>
+        </div>
       </div>
     </section>
 
     <!-- SOLUTION -->
     <section class="cs-section">
-      <p class="eyebrow">Proposed Solution</p>
-      <h2 class="sec-title">Features built to improve trust, visibility, and communication.</h2>
+      <p class="eyebrow">Solution</p>
+      <h2 class="sec-title">Trust by design.</h2>
       <div class="g4">
-        <div class="card lime">
+        <div class="solution-card">
+          <div class="solution-icon">✅</div>
           <h3>Verified Profiles</h3>
-          <p>Certifications, past work, and trust signals that go beyond a simple bio.</p>
+          <p>Certs, past work, vouches — not just a bio.</p>
         </div>
-        <div class="card lime">
+        <div class="solution-card">
+          <div class="solution-icon">🤝</div>
           <h3>Vouch System</h3>
-          <p>Digital word-of-mouth to help newer workers build credibility and surface strengths.</p>
+          <p>Digital word-of-mouth. Earn trust, get hired.</p>
         </div>
-        <div class="card lime">
+        <div class="solution-card">
+          <div class="solution-icon">💬</div>
           <h3>Job-Site Messaging</h3>
-          <p>Faster communication with less friction around scope, changes, and scheduling.</p>
+          <p>Fast, in-context comms with zero friction.</p>
         </div>
-        <div class="card lime">
+        <div class="solution-card">
+          <div class="solution-icon">📋</div>
           <h3>Booking Clarity</h3>
-          <p>Shared expectations, visible details, and stronger process checkpoints on both sides.</p>
+          <p>Shared scope, visible steps, no surprises.</p>
         </div>
       </div>
     </section>
 
     <!-- REFLECTION -->
     <section class="cs-section">
-      <p class="eyebrow">Reflection</p>
-      <h2 class="sec-title">What I learned from designing WorkBench.</h2>
+      <p class="eyebrow">Takeaways</p>
+      <h2 class="sec-title">What shipped. What's next.</h2>
       <div class="reflection-row">
         <div class="reflection-card r1">
-          <h3>Biggest Challenge</h3>
-          <p>Designing a booking flow that balanced clarity, communication, and security for both sides simultaneously — required the most iteration of any section.</p>
+          <h3>Hardest part</h3>
+          <p>Booking flow — balancing clarity for two users at once. Most iterated section.</p>
         </div>
         <div class="reflection-card r2">
-          <h3>Key Learning</h3>
-          <p>Two-sided marketplaces require you to hold two mental models at once. Every design decision that helps one user type can create friction for the other.</p>
+          <h3>Biggest insight</h3>
+          <p>Every design call that helps workers can hurt clients. Hold both at once.</p>
         </div>
         <div class="reflection-card r3">
-          <h3>Next Step</h3>
-          <p>Expand the student apprentice onboarding and run usability testing to validate the vouch system's trust-building effectiveness with real users.</p>
+          <h3>Next up</h3>
+          <p>Maze test the vouch system. Expand apprentice onboarding.</p>
         </div>
       </div>
     </section>
