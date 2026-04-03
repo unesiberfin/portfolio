@@ -180,51 +180,25 @@
       color: var(--lime);
     }
 
-    /* Hero right — floating cards */
+    /* Hero right — device mockup */
     .hero-visual {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      justify-content: center;
       position: relative;
     }
-    .float-card {
-      background: rgba(0,0,0,0.18);
-      border: 1px solid rgba(255,255,255,0.1);
+    .device-mockup {
+      width: 100%;
       border-radius: 20px;
-      padding: 24px 28px;
-      backdrop-filter: blur(8px);
-      transition: transform 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+      transform: perspective(1400px) rotateY(-6deg) rotateX(2deg);
+      transition: transform 0.5s ease;
     }
-    .float-card:hover { transform: translateY(-4px); }
-    .float-card-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 8px;
+    .device-mockup:hover {
+      transform: perspective(1400px) rotateY(-2deg) rotateX(1deg);
     }
-    .float-card-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      color: var(--white);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .float-card-sub {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.5;
-    }
-    .float-card.highlight {
-      background: var(--lime);
-      border-color: transparent;
-    }
-    .float-card.highlight .float-card-label { color: rgba(0,86,62,0.65); }
-    .float-card.highlight .float-card-title { color: var(--green); }
-    .float-card.highlight .float-card-sub { color: rgba(0,86,62,0.8); }
-    .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .device-mockup img { width: 100%; display: block; }
 
     /* ── MARQUEE STRIP ── */
     .marquee-wrap {
@@ -257,72 +231,109 @@
       to { transform: translateX(-50%); }
     }
 
-    /* ── ABOUT SNIPPET ── */
-    .about-strip {
+    /* ── FEATURED WORK ── */
+    .work-section {
       padding: 100px 6%;
       background: var(--off-white);
     }
-    .about-inner {
+    .work-inner {
       max-width: var(--max);
       margin: 0 auto;
+    }
+    .work-inner .eyebrow { margin-bottom: 12px; }
+    .work-inner .sec-title { margin-bottom: 48px; }
+    .work-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--green);
-      margin-bottom: 16px;
-    }
-    .about-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-    .about-title em { font-style: italic; color: var(--green); }
-    .about-body {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--ink-mid);
-      margin-bottom: 36px;
-    }
-    .about-body strong { color: var(--ink); font-weight: 600; }
-    .about-right { display: flex; flex-direction: column; gap: 16px; }
-    .about-stat {
-      display: flex;
-      align-items: center;
+      grid-template-columns: 1.4fr 1fr;
       gap: 20px;
-      padding: 20px 24px;
+    }
+    .work-card {
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .about-stat-num {
-      font-family: 'Fraunces', serif;
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: var(--green);
-      line-height: 1;
-      min-width: 64px;
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
     }
-    .about-stat-text strong {
+    .work-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--green);
+    }
+    .work-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
       display: block;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 2px;
+      transition: transform 0.5s ease;
     }
-    .about-stat-text span {
-      font-size: 0.85rem;
+    .work-card:hover .work-card-img img { transform: scale(1.04); }
+    .work-card-img--adobe {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a2e;
+      aspect-ratio: 16/10;
+    }
+    .adobe-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    .adobe-badge-icon {
+      width: 56px; height: 56px;
+      background: #ff0000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      color: white;
+      font-weight: 400;
+    }
+    .adobe-badge span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .work-card-info {
+      padding: 24px 28px 28px;
+    }
+    .work-card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--green);
+    }
+    .work-card-info h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin: 8px 0 8px;
+    }
+    .work-card-info p {
+      font-size: 0.92rem;
       color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .work-card-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--green);
     }
 
     /* ── SKILLS ── */
@@ -573,10 +584,8 @@
 
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .float-card { padding: 20px; }
-      .card-row { grid-template-columns: 1fr 1fr; }
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .device-mockup { transform: none; }
+      .work-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-inner { flex-direction: column; }
       .contact-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -596,10 +605,8 @@
         z-index: 200;
       }
       .hero { padding: 60px 5%; }
-      .hero-visual { grid-template-columns: 1fr; }
-      .card-row { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
-      .about-strip, .skills-section { padding: 72px 5%; }
+      .work-section, .skills-section { padding: 72px 5%; }
       .contact-section { padding: 72px 5%; }
       .contact-form-wrap { padding: 24px; }
     }
@@ -641,27 +648,8 @@
     </div>
 
     <div class="hero-visual">
-      <div class="float-card highlight">
-        <div class="float-card-label">Specialisation</div>
-        <div class="float-card-title">UX & Product Design</div>
-        <div class="float-card-sub">Research · Wireframes · Prototypes · Hi-fi</div>
-      </div>
-      <div class="card-row">
-        <div class="float-card">
-          <div class="float-card-label">Dev</div>
-          <div class="float-card-title">Web</div>
-          <div class="float-card-sub">HTML · CSS · JS · PHP</div>
-        </div>
-        <div class="float-card">
-          <div class="float-card-label">Tools</div>
-          <div class="float-card-title">Design</div>
-          <div class="float-card-sub">Figma · Illustrator · Photoshop</div>
-        </div>
-      </div>
-      <div class="float-card">
-        <div class="float-card-label">Currently</div>
-        <div class="float-card-title">Interactive Media Design — Algonquin College</div>
-        <div class="float-card-sub">Diploma · Ottawa, Canada · 2026</div>
+      <div class="device-mockup">
+        <img src="images/workbench-dashboard-tablet.png" alt="WorkBench app — dashboard view">
       </div>
     </div>
   </div>
@@ -681,41 +669,37 @@
   </div>
 </div>
 
-<!-- ══ ABOUT SNIPPET ══ -->
-<section class="about-strip">
-  <div class="about-inner">
-    <div>
-      <p class="about-eyebrow">A little about me</p>
-      <h2 class="about-title">Where creativity<br>meets <em>intention.</em></h2>
-      <p class="about-body">
-        I'm a <strong>multidisciplinary digital media designer</strong> who believes great design is never just about how something looks — it's about how it works, communicates, and makes people feel.
-        <br><br>
-        From UX strategy to visual design to front-end code, I bring a <strong>systems mindset</strong> and genuine creative energy to every project I take on.
-      </p>
-      <a href="about.html" class="btn-primary" style="background:var(--green);color:var(--lime);">Learn more about me</a>
-    </div>
-    <div class="about-right">
-      <div class="about-stat">
-        <div class="about-stat-num">4+</div>
-        <div class="about-stat-text">
-          <strong>Years of design experience</strong>
-          <span>Across UX, branding, web & media</span>
+<!-- ══ FEATURED WORK ══ -->
+<section class="work-section">
+  <div class="work-inner">
+    <p class="eyebrow">Featured work</p>
+    <h2 class="sec-title">Projects that ship.</h2>
+    <div class="work-grid">
+      <a href="Projects.html" class="work-card">
+        <div class="work-card-img">
+          <img src="images/workbench-dashboard-tablet.png" alt="WorkBench dashboard">
         </div>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat-num">10+</div>
-        <div class="about-stat-text">
-          <strong>Projects completed</strong>
-          <span>From concept to hi-fi delivery</span>
+        <div class="work-card-info">
+          <span class="work-card-tag">UX Design · Mobile · Figma</span>
+          <h3>WorkBench</h3>
+          <p>A mobile-first marketplace connecting verified tradespeople with real job opportunities.</p>
+          <span class="work-card-link">View case study →</span>
         </div>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat-num">3</div>
-        <div class="about-stat-text">
-          <strong>Core disciplines</strong>
-          <span>UX Design · Web Dev · Visual Media</span>
+      </a>
+      <a href="https://unesiberfin.myportfolio.com/" target="_blank" class="work-card">
+        <div class="work-card-img--adobe">
+          <div class="adobe-badge">
+            <div class="adobe-badge-icon">Ae</div>
+            <span>Adobe Portfolio</span>
+          </div>
         </div>
-      </div>
+        <div class="work-card-info">
+          <span class="work-card-tag">Visual Design · Branding · Photography</span>
+          <h3>More projects</h3>
+          <p>Photography, branding, and motion work — view the full collection on Adobe Portfolio.</p>
+          <span class="work-card-link">Visit portfolio ↗</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
